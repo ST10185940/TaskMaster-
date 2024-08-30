@@ -1,0 +1,42 @@
+@TaskMaster_HostAddress = http://localhost:7186
+
+
+### Get all task items
+GET {{TaskMaster_HostAddress}}/api/TaskItems
+Accept: application/json
+
+###
+
+### Get a specific task item by ID
+GET {{TaskMaster_HostAddress}}/api/TaskItems/1
+Accept: application/json
+
+###
+
+### Create a new task item
+POST {{TaskMaster_HostAddress}}/api/TaskItems
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "New Task 1",
+  "isComplete": false
+}
+
+###
+
+### Update an existing task item
+PUT {{TaskMaster_HostAddress}}/api/TaskItems/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Updated Task",
+  "isComplete": true
+}
+
+###
+
+### Delete a task item by ID
+DELETE https://localhost:5001/api/TaskItems/2
+

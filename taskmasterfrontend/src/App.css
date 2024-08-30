@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --bg-color: #0f0f3f;
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --text-color: #e0e0ff;
+    --accent-color: #7f7fff;
+    --error-color: #ff5f5f;
+    --success-color: #5fff7f;
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background-image: radial-gradient(circle at 10% 20%, rgba(91, 91, 252, 0.2) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(249, 119, 255, 0.2) 0%, transparent 20%);
+    background-attachment: fixed;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.app-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--accent-color), #ff7fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.task-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.task-form {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.task-input {
+    flex-grow: 1;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border-radius: 5px 0 0 5px;
+    transition: var(--transition);
+}
+
+    .task-input:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+    .btn:hover {
+        background: #9f9fff;
+    }
+
+.add-btn {
+    border-radius: 0 5px 5px 0;
+}
+
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    background: transparent;
+    color: var(--text-color);
+    margin: 0 0.5rem;
+    border-radius: 5px;
+}
+
+    .filter-btn.active {
+        background: var(--accent-color);
+    }
+
+.task-list {
+    list-style-type: none;
+}
+
+.task-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+    .task-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .task-item.completed .task-title {
+        text-decoration: line-through;
+        opacity: 0.6;
+    }
+
+.task-label {
+    display: flex;
+    align-items: center;
+}
+
+.task-checkbox {
+    margin-right: 0.5rem;
+}
+
+.delete-btn {
+    background: transparent;
+    color: var(--error-color);
+    font-size: 0.8rem;
+}
+
+    .delete-btn:hover {
+        background: var(--error-color);
+        color: white;
+    }
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    animation: spin 1s ease-in-out infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.error-message {
+    color: var(--error-color);
+    text-align: center;
+    margin: 1rem 0;
+}
+
+@media (max-width: 600px) {
+    .app-container {
+        padding: 1rem;
+    }
+
+    .task-form {
+        flex-direction: column;
+    }
+
+    .task-input, .add-btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+        border-radius: 5px;
+    }
+}
